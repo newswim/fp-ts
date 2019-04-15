@@ -28,6 +28,7 @@ Data structure which represents non-empty arrays
 - [fromNonEmptyArray (function)](#fromnonemptyarray-function)
 - [getSemigroup (function)](#getsemigroup-function)
 - [getSetoid (function)](#getsetoid-function)
+- [getShow (function)](#getshow-function)
 - [group (function)](#group-function)
 - [groupBy (function)](#groupby-function)
 - [groupSort (function)](#groupsort-function)
@@ -250,6 +251,16 @@ assert.strictEqual(S.equals(make(1, [2]), fromNonEmptyArray([1, 3])), false)
 ```
 
 Added in v1.15.0
+
+# getShow (function)
+
+**Signature**
+
+```ts
+export const getShow = <A>(S: Show<A>): Show<NonEmptyArray<A>> => ...
+```
+
+Added in v1.17.0
 
 # group (function)
 

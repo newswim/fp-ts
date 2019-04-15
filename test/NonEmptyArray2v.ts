@@ -25,7 +25,8 @@ import {
   filterWithIndex,
   fromNonEmptyArray,
   cons,
-  snoc
+  snoc,
+  getShow
 } from '../src/NonEmptyArray2v'
 import { none, option, some, isSome } from '../src/Option'
 import { ordNumber } from '../src/Ord'
@@ -35,6 +36,7 @@ import * as T from '../src/Traversable'
 import * as I from '../src/Identity'
 import * as C from '../src/Const'
 import { setoidNumber } from '../src/Setoid'
+import { showString } from '../src/Show'
 
 describe.only('NonEmptyArray2v', () => {
   it('make', () => {
@@ -388,5 +390,11 @@ describe.only('NonEmptyArray2v', () => {
 
   it('snoc', () => {
     assert.deepStrictEqual(snoc([1, 2, 3], 4), [1, 2, 3, 4])
+  })
+
+  it('getShow', () => {
+    const S = getShow(showString)
+    assert.strictEqual(S.show(make<string>('a', [])), `make("a", [])`)
+    assert.strictEqual(S.show(make<string>('a', ['b', 'c'])), `make("a", ["b", "c"])`)
   })
 })
